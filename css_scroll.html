@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding:0;
+            height: 5000px;
+        }
+        .scroll-indicator {
+            position: fixed;
+            height: 8px;
+            top: 0;
+            left: 0;
+            background: #369;
+        }
+    </style>
+    <script>
+        (function() {
+            var dh = $(document).height();
+            var vh = $(window).height();
+            var sHeight = dh - vh;
+            $(window).scroll(function () {
+                var perc = $(window).scrollTop() / (dh - vh);
+                $('.j-scroll-indicator').css({width: perc * 100 + '%'});
+            });
+        }());
+
+    </script>
+</head>
+<body>
+<div class="scroll-indicator j-scroll-indicator"></div>
+</body>
+</html>
