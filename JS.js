@@ -84,11 +84,11 @@ function  randomStr(n) {
     return result;
 }
 //深拷贝
-JSON.parse(JSON.stringify(obj));
+// JSON.parse(JSON.stringify(obj));
 
 
 //优化console
-console.info("%c哈哈", "color: #3190e8; font-size: 30px; font-family: sans-serif");
+// console.info("%c哈哈", "color: #3190e8; font-size: 30px; font-family: sans-serif");
 
 
 

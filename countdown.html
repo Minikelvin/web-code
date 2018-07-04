@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3倒计时</title>
+    <style>
+        body {
+            background: #fff;
+        }
+        .lcd-holder {
+            overflow: hidden;
+            width: 800px;
+            margin: 0 auto;
+        }
+        .lcd-holder .lcd-item {
+            float: left;
+            height: 160px;
+            width: 80px;
+            position: relative;
+            margin: 8px;
+        }
+        .lcd-holder .lcd-item:nth-child(2),
+        .lcd-holder .lcd-item:nth-child(4) {
+            margin-right: 80px;
+        }
+        .lcd-holder .lcd-item:nth-child(2):after,
+        .lcd-holder .lcd-item:nth-child(4):after {
+            content: ":";
+            position: absolute;
+            width: 80px;
+            right: -80px;
+            text-align: center;
+            color: #666;
+            font-size: 80px;
+            line-height: 160px;
+        }
+        .lcd-holder .lcd-item > i {
+            position: absolute;
+            width: 80px;
+            height: 8px;
+            left: 0;
+            top: 80px;
+            background: #666;
+            transition: transform .5s ease;
+        }
+        .lcd-holder .lcd-item.lcd-0 :nth-child(1) {
+            transform: translate3d(0, -80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-0 :nth-child(2) {
+            transform: rotate(-90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-0 :nth-child(3) {
+            transform: rotate(90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-0 :nth-child(4) {
+            transform: rotate(90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-0 :nth-child(5) {
+            transform: rotate(90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-0 :nth-child(6) {
+            transform: rotate(-90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-0 :nth-child(7) {
+            transform: translate3d(0, 80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-1 > i {
+            transform-origin: left;
+            transform: translate3d(40px, 0, 0) rotate(-90deg);
+        }
+        .lcd-holder .lcd-item.lcd-1 :nth-child(1) {
+            transform: translate3d(40px, 0, 0) rotate(90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-2 :nth-child(1) {
+            transform: translate3d(0, -80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-2 :nth-child(2) {
+            transform: rotate(90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-2 :nth-child(6) {
+            transform: rotate(90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-2 :nth-child(7) {
+            transform: translate3d(0, 80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-3 :nth-child(1) {
+            transform: translate3d(0, -80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-3 :nth-child(2) {
+            transform: rotate(90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-3 :nth-child(6) {
+            transform: rotate(-90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-3 :nth-child(7) {
+            transform: translate3d(0, 80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-4 :nth-child(2) {
+            transform: rotate(-90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-4 :nth-child(3) {
+            transform: rotate(90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-4 :nth-child(6) {
+            transform: rotate(-90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-5 :nth-child(1) {
+            transform: translate3d(0, -80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-5 :nth-child(2) {
+            transform: rotate(-90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-5 :nth-child(6) {
+            transform: rotate(-90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-5 :nth-child(7) {
+            transform: translate3d(0, 80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-6 :nth-child(1) {
+            transform: translate3d(0, -80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-6 :nth-child(2) {
+            transform: rotate(-90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-6 :nth-child(5) {
+            transform: rotate(90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-6 :nth-child(6) {
+            transform: rotate(-90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-6 :nth-child(7) {
+            transform: translate3d(0, 80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-7 > i {
+            transform: translate3d(0, -80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-7 :nth-child(3) {
+            transform: translate3d(0, 0, 0) rotate(90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-7 :nth-child(6) {
+            transform: translate3d(0, 0, 0) rotate(-90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-8 :nth-child(1) {
+            transform: translate3d(0, -80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-8 :nth-child(2) {
+            transform: rotate(-90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-8 :nth-child(3) {
+            transform: rotate(90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-8 :nth-child(5) {
+            transform: rotate(90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-8 :nth-child(6) {
+            transform: rotate(-90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-8 :nth-child(7) {
+            transform: translate3d(0, 80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-9 :nth-child(1) {
+            transform: translate3d(0, -80px, 0);
+        }
+        .lcd-holder .lcd-item.lcd-9 :nth-child(2) {
+            transform: rotate(-90deg);
+            transform-origin: left;
+        }
+        .lcd-holder .lcd-item.lcd-9 :nth-child(3) {
+            transform: rotate(90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-9 :nth-child(6) {
+            transform: rotate(-90deg);
+            transform-origin: right;
+        }
+        .lcd-holder .lcd-item.lcd-9 :nth-child(7) {
+            transform: translate3d(0, 80px, 0);
+        }
+
+        @keyframes flip {
+            from {transform: rotateX(0)}
+            to {transform: rotateX(360deg)}
+        }
+        .flip-holder {
+            width: 240px;
+            margin: 30px auto;
+        }
+        .flip-holder .flip {
+            background: #fff;
+            animation: flip .5s;
+        }
+        .flip-holder .flip-item {
+            width: 40px;
+            font: bold 60px/1 Arial;
+            float: left;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="lcd-holder" id="lcd-holder">
+    <div class="lcd-item lcd-8"></div>
+    <div class="lcd-item lcd-8"></div>
+    <div class="lcd-item lcd-8"></div>
+    <div class="lcd-item lcd-8"></div>
+    <div class="lcd-item lcd-8"></div>
+    <div class="lcd-item lcd-8"></div>
+</div>
+
+<div class="flip-holder" id="flip-holder" style='display:none'>
+    <div class="flip-item"></div>
+    <div class="flip-item"></div>
+    <div class="flip-item"></div>
+    <div class="flip-item"></div>
+    <div class="flip-item"></div>
+    <div class="flip-item"></div>
+</div>
+<script>
+    const dateformat = (d=new Date(), fmt='yy年MM月dd日 hh:mm:ss') => {
+        const c = {y: 'FullYear', yy: 'FullYear', M: 'Month+1', d: 'Date', h: 'Hours', m: 'Minutes', s: 'Seconds'}
+        return fmt.replace(/([yMdhms])(\1*)/g, (pp, p, _p) => {
+            if (_p && c[pp]) return d[`get${c[pp]}`]()
+            const [k, n] = c[p].split(/\W/)
+            return ('0'.repeat(pp.length - 1) + (d[`get${k}`]() + (n|0))).slice(-2)
+        })
+    }
+
+    var lcd = document.getElementById('lcd-holder');
+    var flip = document.getElementById('flip-holder');
+    var items = lcd.children;
+    var items2 = flip.children;
+    for (var i = 0; i < items.length; i++) {
+        items[i].innerHTML = '<i></i>'.repeat(7);
+    }
+
+    setInterval(function () {
+        var lcdDate = dateformat(new Date(), 'hhmmss');
+        for (var i = 0; i < lcdDate.length; i++) {
+            (function (i) {
+                items[i].className = 'lcd-item lcd-' + lcdDate[i];
+                if (items2[i].innerHTML !== lcdDate[i]) {
+                    items2[i].innerHTML = lcdDate[i];
+                    items2[i].className = 'flip flip-item';
+                    setTimeout(function () {
+                        items2[i].className = 'flip-item';
+                    }, 500)
+                }
+            })(i)
+
+
+        }
+    }, 1000);
+</script>
+</body>
+</html>
